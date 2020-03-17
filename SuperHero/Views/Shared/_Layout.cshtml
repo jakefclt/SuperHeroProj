@@ -25,7 +25,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        </li>                       
                     </ul>
                 </div>
             </div>
@@ -38,8 +38,30 @@
             <div class=" image">
                 <img src="~/images/heroes.jfif" alt="Alternate Text" class=" center" />
             </div>
-            
 
+            <ul class="badges">
+
+                <li class="nav-item">
+                   
+                    <a class="badge badge-danger" asp-area="" asp-controller="Superheroes" asp-action="Index">View</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="badge badge-primary" asp-area="" asp-controller="Superheroes" asp-action="Create">Create</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="badge badge-warning" asp-area="" asp-controller="Superheroes" asp-action="Edit">Edit</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="badge badge-info" asp-area="" asp-controller="Superheroes" asp-action="Details">Details</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="badge badge-secondary" asp-area="" asp-controller="Superheroes" asp-action="Delete">Delete</a>
+                </li>
+            </ul>
         </main>
     </div>
 
