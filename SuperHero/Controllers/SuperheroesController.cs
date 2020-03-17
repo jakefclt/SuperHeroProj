@@ -22,6 +22,8 @@ namespace SuperHero.Controllers
         // GET: Superheroes
         public ActionResult Index()
         {
+            //template view is called List but you need to name the view Index
+            //localhost44307/Superheroes/Index
             var superheroes = _context.Superheroes.ToList();  
             return View(superheroes);
         }
@@ -61,18 +63,22 @@ namespace SuperHero.Controllers
         // GET: Superheroes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            
+            var hero = _context.Superheroes.Where(s => s.Id == id).Single();
+            return View(hero);
         }
 
         // POST: Superheroes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Hero superhero)
         {
             try
             {
                 // TODO: Add update logic here
 
+                _context.Superheroes.Update(superhero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -90,12 +96,13 @@ namespace SuperHero.Controllers
         // POST: Superheroes/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Hero superhero)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                _context.Superheroes.Remove(superhero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
