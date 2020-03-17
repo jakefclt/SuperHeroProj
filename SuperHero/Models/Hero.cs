@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace SuperHero.Models
 {
-    public class SuperHero
+    public class Hero
     {
+         
         [Key]
-        public int Id  { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string AlterEgo { get; set; }
         public string PrimaryAbility { get; set; }
@@ -18,3 +19,4 @@ namespace SuperHero.Models
 
     }
 }
+
