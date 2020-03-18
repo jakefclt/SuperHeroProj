@@ -31,7 +31,18 @@ namespace SuperHero.Controllers
         // GET: Superheroes/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            try
+            {
+                
+                var details = _context.Superheroes.Where(d => d.Id == id).SingleOrDefault();
+                return View(details);
+            }
+
+            catch
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            
         }
 
         // GET: Superheroes/Create
@@ -63,9 +74,19 @@ namespace SuperHero.Controllers
         // GET: Superheroes/Edit/5
         public ActionResult Edit(int id)
         {
+            try
+            {
+                var hero = _context.Superheroes.Where(s => s.Id == id).Single();
+                return View(hero);
+            }
+
+            catch
+            {
+                return RedirectToAction(nameof(Index));
+                
+            }
+           
             
-            var hero = _context.Superheroes.Where(s => s.Id == id).Single();
-            return View(hero);
         }
 
         // POST: Superheroes/Edit/5
@@ -110,5 +131,7 @@ namespace SuperHero.Controllers
                 return View();
             }
         }
+
+       
     }
 }
